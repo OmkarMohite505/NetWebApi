@@ -4495,24 +4495,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Omkar.Mohite\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\rahul\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Omkar.Mohite\\source\\repos\\WebApi\\WebApi.csproj",
+      "projectUniqueName": "E:\\Demo\\NET\\NetWebApi\\WebApi.csproj",
       "projectName": "WebApi",
-      "projectPath": "C:\\Users\\Omkar.Mohite\\source\\repos\\WebApi\\WebApi.csproj",
-      "packagesPath": "C:\\Users\\Omkar.Mohite\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Omkar.Mohite\\source\\repos\\WebApi\\obj\\",
+      "projectPath": "E:\\Demo\\NET\\NetWebApi\\WebApi.csproj",
+      "packagesPath": "C:\\Users\\rahul\\.nuget\\packages\\",
+      "outputPath": "E:\\Demo\\NET\\NetWebApi\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Omkar.Mohite\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\rahul\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
