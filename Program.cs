@@ -56,6 +56,18 @@ builder.Services.AddAuthentication(options =>
 
     });
 
+builder.Services.AddSpaStaticFiles(configuration =>
+{
+    configuration.RootPath = "wwwroot";
+});
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAllRequest",
+        policy => policy.AllowAnyOrigin()
+        .AllowAnyMethod()
+        .AllowAnyHeader());
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -64,11 +76,17 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCors("AllowAllRequest");
 app.UseHttpsRedirection();
 app.UseAuthentication();
-app.UseAuthorization();
 
-app.MapControllers();
+app.UseSpaStaticFiles();
+app.UseRouting();
+app.UseAuthorization();
+app.UseEndpoints(endpoints =>
+{
+    _ = app.MapControllers();
+    _ = endpoints.MapFallbackToFile("/index.html");
+});
 
 app.Run();

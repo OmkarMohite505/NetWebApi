@@ -279,3 +279,5 @@ E:\Demo\NET\NetWebApi\obj\Debug\net8.0\refint\WebApi.dll
 E:\Demo\NET\NetWebApi\obj\Debug\net8.0\WebApi.pdb
 E:\Demo\NET\NetWebApi\obj\Debug\net8.0\WebApi.genruntimeconfig.cache
 E:\Demo\NET\NetWebApi\obj\Debug\net8.0\ref\WebApi.dll
+E:\Demo\NET\NetWebApi\bin\Debug\net8.0\WebApi.staticwebassets.runtime.json
+E:\Demo\NET\NetWebApi\bin\Debug\net8.0\Microsoft.AspNetCore.SpaServices.Extensions.dll

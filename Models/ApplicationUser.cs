@@ -18,5 +18,6 @@ namespace WebApi.Models
         /// </summary>
         [MaxLength(30)]
         public string? Name { get; set; }
+        public string? ProfilePicture { get; set; }
     }
 }

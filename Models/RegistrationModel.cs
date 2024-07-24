@@ -21,5 +21,7 @@ namespace WebApi.Models
 
         [Required(ErrorMessage = "Password is required")]
         public string? Password { get; set; }
+        // New property for profile picture
+        public IFormFile ProfilePicture { get; set; }
     }
 }

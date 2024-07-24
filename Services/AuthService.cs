@@ -21,7 +21,7 @@ namespace WebApi.Services
         }
         public async Task<(int, string)> Registeration(RegistrationModel model, string role)
         {
-            var userExists = await userManager.FindByNameAsync(model.Username);
+            var userExists = await userManager.FindByEmailAsync(model.Email);
             if (userExists != null)
                 return (0, "User already exists");
 
@@ -30,12 +30,19 @@ namespace WebApi.Services
                 Email = model.Email,
                 SecurityStamp = Guid.NewGuid().ToString(),
                 UserName = model.Username,
-                Name = model.Name
+                Name = model.Name,
+                ProfilePicture = model.ProfilePicture.FileName
             };
             var createUserResult = await userManager.CreateAsync(user, model.Password);
             if (!createUserResult.Succeeded)
-                return (0, "User creation failed! Please check user details and try again.");
-
+            {
+                string errors = "\n";
+                foreach (var item in createUserResult.Errors)
+                {
+                    errors += item.Description + "\n";
+                }
+                return (0, "User creation failed! Please check user details and try again."+ errors);
+            }
             if (!await roleManager.RoleExistsAsync(role))
                 await roleManager.CreateAsync(new IdentityRole(role));
 
@@ -46,16 +53,16 @@ namespace WebApi.Services
 
         public async Task<(int, string)> Login(LoginModel model)
         {
-            var user = await userManager.FindByNameAsync(model.Username);
+            var user = await userManager.FindByEmailAsync(model.Email);
             if (user == null)
-                return (0, "Invalid username");
+                return (0, "Invalid Email ID");
             if (!await userManager.CheckPasswordAsync(user, model.Password))
                 return (0, "Invalid password");
 
             var userRoles = await userManager.GetRolesAsync(user);
             var authClaims = new List<Claim>
             {
-               new Claim(ClaimTypes.Name, user.UserName),
+               new Claim(ClaimTypes.Name, user.Email),
                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
             };
 

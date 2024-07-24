@@ -7,6 +7,7 @@ namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+  
     public class AuthenticationController : ControllerBase
     {
         private readonly IAuthService _authService;
@@ -52,7 +53,7 @@ namespace WebApi.Controllers
                 {
                     return BadRequest(message);
                 }
-                return CreatedAtAction(nameof(Register), model);
+                return CreatedAtAction(nameof(Register), null);
 
             }
             catch (Exception ex)
@@ -61,5 +62,9 @@ namespace WebApi.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
         }
+    }
+    public class My
+    {
+        public string Params { get; set; }
     }
 }
