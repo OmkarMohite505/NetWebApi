@@ -48,7 +48,7 @@ namespace WebApi.Controllers
             {
                 if (!ModelState.IsValid)
                     return BadRequest("Invalid payload");
-                var (status, message) = await _authService.Registeration(model, UserRoles.User);
+                var (status, message) = await _authService.Registeration(model);
                 if (status == 0)
                 {
                     return BadRequest(message);
@@ -62,9 +62,5 @@ namespace WebApi.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
         }
-    }
-    public class My
-    {
-        public string Params { get; set; }
     }
 }

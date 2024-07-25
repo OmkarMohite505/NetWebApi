@@ -19,8 +19,15 @@ namespace WebApi.Services
             _configuration = configuration;
 
         }
-        public async Task<(int, string)> Registeration(RegistrationModel model, string role)
+        public async Task<(int, string)> Registeration(RegistrationModel model)
         {
+            if (model.Role.Equals(RoleType.Admin))
+            {
+                if (!model.SecretKey.Equals(_configuration["AdminSecretKey"]))
+                {
+                    return (0, "Provided secret key is not correct");
+                }
+            }
             var userExists = await userManager.FindByEmailAsync(model.Email);
             if (userExists != null)
                 return (0, "User already exists");
@@ -43,10 +50,10 @@ namespace WebApi.Services
                 }
                 return (0, "User creation failed! Please check user details and try again."+ errors);
             }
-            if (!await roleManager.RoleExistsAsync(role))
-                await roleManager.CreateAsync(new IdentityRole(role));
+            if (!await roleManager.RoleExistsAsync(model.Role.ToString()))
+                await roleManager.CreateAsync(new IdentityRole(model.Role.ToString()));
 
-            var status = await userManager.AddToRoleAsync(user, role);
+            var status = await userManager.AddToRoleAsync(user, model.Role.ToString());
 
             return (1, "User created successfully!");
         }
@@ -83,7 +90,7 @@ namespace WebApi.Services
             {
                 Issuer = _configuration["JWT:ValidIssuer"],
                 Audience = _configuration["JWT:ValidAudience"],
-                Expires = DateTime.UtcNow.AddHours(3),
+                Expires = DateTime.UtcNow.AddMinutes(3),
                 SigningCredentials = new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256),
                 Subject = new ClaimsIdentity(claims)
             };

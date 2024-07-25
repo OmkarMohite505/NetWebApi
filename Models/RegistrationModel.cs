@@ -23,5 +23,12 @@ namespace WebApi.Models
         public string? Password { get; set; }
         // New property for profile picture
         public IFormFile ProfilePicture { get; set; }
+        public RoleType Role { get; set; }
+        public string? SecretKey { get; set; }
+    }
+
+    public enum RoleType
+    {
+        User, Admin
     }
 }
