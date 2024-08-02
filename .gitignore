@@ -1,4 +1,88 @@
-/bin
-/.vs
-/obj
-/.vs/**
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# .NET Core 2, .NET 5+
+*.deps.json
+*.runtimeconfig.json
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Auto-generated files
+*.vspscc
+*.vssscc
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Bb]uild[Ll]og/
+
+# NuGet
+*.nupkg
+*.snupkg
+.nuget/
+packages/
+!packages/*/
+# Uncomment if necessary however generally it will be regenerated
+#.nuget/packages/
+#.nuget/fallbackpackages/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Visual Studio
+.vscode/
+.vs/
+.vscode-test/
+.vscode-test-output/
+.vscode-test-coreclr/
+.vscode-test-runtime/
+.vscode-test-bbtest-output/
+testresults/
+TestResults/
+*.userosscache
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+.vscode/
+.vs/
+
+# Rider
+.idea/
+*.sln.iml
+
+# Resharper
+_ReSharper.Caches/
+
+# Backup & Build Folders
+Backup/
+deploy/
+logs/
+temp/
+tmp/
+
+# Package results
+*.nupkg
+*.snupkg
+
+# Publish output
+publish/
+
+# Azure Web App deployment
+.scm/
+deployment/
